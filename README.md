@@ -1,37 +1,94 @@
-# Odoo
+# ERP CRM - Implementación Personalizada de Odoo
 
 [![Build Status](https://runbot.odoo.com/runbot/badge/flat/1/master.svg)](https://runbot.odoo.com/runbot)
 [![Tech Doc](https://img.shields.io/badge/master-docs-875A7B.svg?style=flat&colorA=8F8F8F)](https://www.odoo.com/documentation/master)
 [![Help](https://img.shields.io/badge/master-help-875A7B.svg?style=flat&colorA=8F8F8F)](https://www.odoo.com/forum/help-1)
-[![Nightly Builds](https://img.shields.io/badge/master-nightly-875A7B.svg?style=flat&colorA=8F8F8F)](https://nightly.odoo.com/)
 
-Odoo is a suite of web based open source business apps.
+## Descripción del Proyecto
+Este proyecto es una implementación personalizada de Odoo, un sistema ERP (Enterprise Resource Planning) de código abierto. El sistema está diseñado para gestionar todos los aspectos de un negocio, desde CRM hasta gestión de inventario y contabilidad.
 
-The main Odoo Apps include an [Open Source CRM](https://www.odoo.com/page/crm),
-[Website Builder](https://www.odoo.com/app/website),
-[eCommerce](https://www.odoo.com/app/ecommerce),
-[Warehouse Management](https://www.odoo.com/app/inventory),
-[Project Management](https://www.odoo.com/app/project),
-[Billing &amp; Accounting](https://www.odoo.com/app/accounting),
-[Point of Sale](https://www.odoo.com/app/point-of-sale-shop),
-[Human Resources](https://www.odoo.com/app/employees),
-[Marketing](https://www.odoo.com/app/social-marketing),
-[Manufacturing](https://www.odoo.com/app/manufacturing),
-[...](https://www.odoo.com/)
+## Características Principales
+- CRM (Customer Relationship Management)
+- Gestión de Inventario
+- Contabilidad y Facturación
+- Gestión de Proyectos
+- Comercio Electrónico
+- Punto de Venta
+- Recursos Humanos
+- Marketing
+- Manufactura
 
-Odoo Apps can be used as stand-alone applications, but they also integrate seamlessly so you get
-a full-featured [Open Source ERP](https://www.odoo.com) when you install several Apps.
+## Requisitos del Sistema
+- Python 3.8+
+- PostgreSQL
+- Dependencias listadas en `requirements.txt`
 
-## Getting started with Odoo
+## Instalación
 
-For a standard installation please follow the [Setup instructions](https://www.odoo.com/documentation/master/administration/install/install.html)
-from the documentation.
+1. Clonar el repositorio:
+```bash
+git clone https://github.com/miguelmartmart/erpcrm.git
+cd erpcrm
+```
 
-To learn the software, we recommend the [Odoo eLearning](https://www.odoo.com/slides),
-or [Scale-up, the business game](https://www.odoo.com/page/scale-up-business-game).
-Developers can start with [the developer tutorials](https://www.odoo.com/documentation/master/developer/howtos.html).
+2. Crear y activar entorno virtual:
+```bash
+python -m venv venv
+source venv/bin/activate  # En Linux/Mac
+# o
+.\venv\Scripts\activate  # En Windows
+```
 
-## Security
+3. Instalar dependencias:
+```bash
+pip install -r requirements.txt
+```
 
-If you believe you have found a security issue, check our [Responsible Disclosure page](https://www.odoo.com/security-report)
-for details and get in touch with us via email.
+4. Configurar la base de datos PostgreSQL
+
+5. Iniciar el servidor:
+```bash
+./odoo-bin
+```
+
+## Estructura del Proyecto
+```
+erpcrm/
+├── addons/           # Módulos personalizados
+├── odoo/            # Core de Odoo
+├── setup/           # Scripts de configuración
+├── venv/            # Entorno virtual
+├── requirements.txt # Dependencias del proyecto
+└── odoo-bin        # Script de inicio
+```
+
+## Configuración
+El archivo de configuración principal se encuentra en `setup/odoo.conf`. Asegúrate de configurar:
+- Conexión a la base de datos
+- Puerto del servidor
+- Modo de desarrollo/producción
+
+## Desarrollo
+Para desarrollo, se recomienda:
+1. Activar el modo desarrollador en la interfaz web
+2. Usar el entorno virtual
+3. Seguir las guías de desarrollo de Odoo
+
+## Contribución
+Para contribuir al proyecto:
+1. Fork el repositorio
+2. Crear una rama para tu feature
+3. Hacer commit de tus cambios
+4. Crear un Pull Request
+
+## Licencia
+Este proyecto está bajo la licencia LGPL-3.0. Ver el archivo [LICENSE](LICENSE) para más detalles.
+
+## Soporte
+Para soporte y ayuda:
+- Revisar la [documentación oficial de Odoo](https://www.odoo.com/documentation/master)
+- Consultar el [foro de ayuda de Odoo](https://www.odoo.com/forum/help-1)
+- Abrir un issue en este repositorio
+
+## Seguridad
+Para reportar problemas de seguridad, por favor revisa nuestra [política de seguridad](SECURITY.md).
