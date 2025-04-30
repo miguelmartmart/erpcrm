@@ -1,0 +1,56 @@
+services:
+  # Servicio de base de datos PostgreSQL
+  db:
+    image: postgres:16
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data
+    networks:
+      - odoo-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U odoo"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Servicio de Odoo
+  odoo:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8069:8069"
+    volumes:
+      - ./addons:/opt/odoo/addons
+      # - ./odoo:/opt/odoo  # This mount hides the odoo-bin copied in Dockerfile
+      - ./setup:/opt/odoo/setup
+      - odoo-web-data:/opt/odoo/web
+      - ./odoo/odoo.conf:/opt/odoo/.odoorc
+      - odoo-config:/opt/odoo/config
+      - odoo-extra-addons:/opt/odoo/extra-addons
+      - odoo-filestore-data:/opt/odoo/.local/share/Odoo  # Persist filestore
+    environment:
+      - HOST=db
+      - USER=odoo
+      - PASSWORD=odoo
+      - DATABASE=postgres
+      - TZ=Europe/Madrid
+      - HOME=/opt/odoo
+    networks:
+      - odoo-network
+    restart: unless-stopped
+
+volumes:
+  odoo-db-data:
+  odoo-web-data:
+  odoo-config:
+  odoo-extra-addons:
+  odoo-filestore-data:  # Define filestore volume
+
+networks:
+  odoo-network:
+    driver: bridge
