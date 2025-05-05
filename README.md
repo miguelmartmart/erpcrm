@@ -92,3 +92,34 @@ Para soporte y ayuda:
 
 ## Seguridad
 Para reportar problemas de seguridad, por favor revisa nuestra [política de seguridad](SECURITY.md).
+
+## Acceso a la Base de Datos en Contenedor Docker
+
+Si bien puede haber problemas de autenticación al intentar acceder a la base de datos directamente desde el host, se puede interactuar con la base de datos ejecutando comandos `psql` dentro del contenedor Docker `erpcrm-db-1`.
+
+Para ejecutar comandos `psql` dentro del contenedor, utilice el siguiente formato:
+
+```bash
+docker exec erpcrm-db-1 psql -U odoo -d odoodb -c 'TU_SENTENCIA_SQL_O_COMANDO_PSQL'
+```
+
+Donde `TU_SENTENCIA_SQL_O_COMANDO_PSQL` es el comando SQL o el meta-comando de psql que desea ejecutar.
+
+Ejemplos:
+
+- Para ver el esquema de una tabla (por ejemplo, `account_move`):
+```bash
+docker exec erpcrm-db-1 psql -U odoo -d odoodb -c '\d account_move'
+```
+
+- Para seleccionar datos de una tabla (por ejemplo, los nombres de los empleados):
+```bash
+docker exec erpcrm-db-1 psql -U odoo -d odoodb -c 'SELECT name FROM hr_employee;'
+```
+
+- Para seleccionar datos con uniones y límites:
+```bash
+docker exec erpcrm-db-1 psql -U odoo -d odoodb -c 'SELECT aml.date, aa.name AS account_name, rp.name AS partner_name, aml.debit, aml.credit FROM account_move_line aml JOIN account_account aa ON aml.account_id = aa.id LEFT JOIN res_partner rp ON aml.partner_id = rp.id LIMIT 10;'
+```
+
+Utilice este método para explorar la estructura y los datos de la base de datos directamente desde el contenedor.
