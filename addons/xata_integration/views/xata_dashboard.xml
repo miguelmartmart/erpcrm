@@ -1,0 +1,51 @@
+<odoo>
+    <record id="view_xata_dashboard" model="ir.ui.view">
+        <field name="name">xata.dashboard.form</field>
+        <field name="model">xata.config</field>
+        <field name="arch" type="xml">
+            <form string="Xata Dashboard">
+                <sheet>
+                    <group col="2">
+                        <group string="Dashboard">
+                            <field name="status"/>
+                            <field name="name"/>
+                            <field name="api_key"/>
+                            <field name="last_sync"/>
+                        </group>
+                        <group string="Dashboran">
+                            <field name="system_performance"/>
+                            <field name="database_queries"/>
+                            <field name="anomalies_detected"/>
+                        </group>
+                        <group string="Monitoring">
+                            <field name="monitoring_data"/>
+                        </group>
+                        <group string="Suggestions">
+                            <field name="suggestions"/>
+                        </group>
+                        <group string="Slow Queries">
+                            <field name="slow_queries_ids">
+                                <tree string="Slow Queries">
+                                    <field name="calls"/>
+                                    <field name="average_time"/>
+                                    <field name="query"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Definición de la acción de ventana -->
+    <record id="xata_action_dashboard" model="ir.actions.act_window">
+        <field name="name">Xata Dashboard</field>
+        <field name="res_model">xata.config</field>
+        <field name="view_mode">form</field>
+    </record>
+
+    <!-- Definición de los menús -->
+    <menuitem id="xata_menu_root" name="Xata Integration" sequence="10"/>
+    <menuitem id="xata_menu_dashboard" name="Dashboard" parent="xata_menu_root" action="xata_action_dashboard"/>
+</odoo>
