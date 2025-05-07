@@ -1,5 +1,5 @@
 services:
-  # Servicio de base de datos PostgreSQL
+  # Servicio de base de datos PostgreSQL para Odoo
   db:
     image: postgres:16
     environment:
@@ -47,6 +47,27 @@ services:
     networks:
       - odoo-network
     restart: unless-stopped
+
+  # Servicio de Xata Agent
+  xata-agent:
+    build:
+      context: /home/miguel/dev/agents/xata-agent
+    environment:
+      DATABASE_URL: postgresql://odoo:odoo@db:5432/odoodb
+      NODE_ENV: production
+      AUTH_TRUST_HOST: ${AUTH_TRUST_HOST:-localhost}
+    env_file:
+      - /home/miguel/dev/agents/xata-agent/.env.production
+    ports:
+      - '8080:8080'
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - odoo-network
+    volumes:
+      - /home/miguel/dev/agents/xata-agent:/app  # Montar el código para reflejar cambios en caliente si lo necesitas
+
 
 volumes:
   odoo-db-data:
