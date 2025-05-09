@@ -1,0 +1,3 @@
+id,name,model_id,group_id,perm_read,perm_write,perm_create,perm_unlink
+access_xata_config,xata.config.access,model_xata_config,,1,1,1,1
+access_xata_slow_query,xata.slow.query.access,model_xata_slow_query,,1,1,1,1

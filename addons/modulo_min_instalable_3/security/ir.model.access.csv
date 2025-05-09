@@ -1,0 +1,2 @@
+id,name,model_id,group_id,perm_read,perm_write,perm_create,perm_unlink
+access_modulo_min_instalable_3,modulo.min.instalable.3,model_modulo_min_instalable_3,,1,1,1,1

@@ -1,2 +1,12 @@
 <odoo>
+    <!-- Definición de la acción de ventana -->
+    <record id="xata_action_dashboard" model="ir.actions.act_window">
+        <field name="name">Xata Dashboard</field>
+        <field name="res_model">xata.config</field>
+        <field name="view_mode">form</field>
+    </record>
+
+    <!-- Definición de los menús -->
+    <menuitem id="xata_menu_root" name="Xata Integration" sequence="10"/>
+    <menuitem id="xata_menu_dashboard" name="Dashboard" parent="xata_menu_root" action="xata_action_dashboard"/>
 </odoo>

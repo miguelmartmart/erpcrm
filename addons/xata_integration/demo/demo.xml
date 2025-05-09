@@ -1,0 +1,29 @@
+<odoo>
+    <!-- Data examples for xata.config -->
+    <record id="xata_config_demo_1" model="xata.config">
+        <field name="name">Demo Configuration 1</field>
+        <field name="api_key">sk_demo_api_key_1</field>
+        <field name="status">active</field>
+        <!-- last_sync will be set automatically or can be added here -->
+        <field name="system_performance">Good</field>
+        <field name="database_queries">1000</field>
+        <field name="anomalies_detected">5</field>
+        <field name="monitoring_data">Some monitoring data for demo 1.</field>
+        <field name="suggestions">Check query performance.</field>
+    </record>
+
+    <!-- Data examples for xata.slow.query -->
+    <record id="xata_slow_query_demo_1" model="xata.slow.query">
+        <field name="config_id" ref="xata_config_demo_1"/>
+        <field name="calls">50</field>
+        <field name="average_time">0.5</field>
+        <field name="query">SELECT * FROM res_partner WHERE active = True;</field>
+    </record>
+
+    <record id="xata_slow_query_demo_2" model="xata.slow.query">
+        <field name="config_id" ref="xata_config_demo_1"/>
+        <field name="calls">10</field>
+        <field name="average_time">1.2</field>
+        <field name="query">SELECT COUNT(*) FROM sale_order_line WHERE price_unit > 100;</field>
+    </record>
+</odoo>

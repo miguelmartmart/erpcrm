@@ -6,8 +6,10 @@
     'author': 'Your Name',
     'depends': ['base', 'web'],
     'data': [
-        'views/xata_dashboard.xml',
         'views/xata_menu.xml',
+        'views/xata_dashboard.xml',
+        'security/ir.model.access.csv',
+        'demo/demo.xml',
     ],
     'installable': True,
     'application': True,

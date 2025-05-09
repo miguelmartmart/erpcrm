@@ -1,0 +1,24 @@
+<odoo>
+    <record id="view_modulo_min_instalable_2_form" model="ir.ui.view">
+        <field name="name">modulo.min.instalable.2.form</field>
+        <field name="model">modulo.min.instalable.2</field>
+        <field name="arch" type="xml">
+            <form string="Módulo Mínimo Instalable 2">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_modulo_min_instalable_2" model="ir.actions.act_window">
+        <field name="name">Módulo Mínimo Instalable 2</field>
+        <field name="res_model">modulo.min.instalable.2</field>
+        <field name="view_mode">form</field>
+    </record>
+
+    <menuitem id="menu_modulo_min_instalable_2" name="Módulo Mínimo Instalable 2"
+              parent="base.menu_custom" action="action_modulo_min_instalable_2"/>
+</odoo>

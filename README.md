@@ -1,4 +1,4 @@
-# ERP CRM - Implementación Personalizada de Odoo
+# ERP CRM - Implementación Personalizada de Odoo actualizado
 
 [![Build Status](https://runbot.odoo.com/runbot/badge/flat/1/master.svg)](https://runbot.odoo.com/runbot)
 [![Tech Doc](https://img.shields.io/badge/master-docs-875A7B.svg?style=flat&colorA=8F8F8F)](https://www.odoo.com/documentation/master)

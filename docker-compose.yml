@@ -46,6 +46,8 @@ services:
       - HOME=/opt/odoo
     networks:
       - odoo-network
+    command: 
+      - odoo-bin server --log-level=debug
     restart: unless-stopped
 
   # Servicio de Xata Agent
